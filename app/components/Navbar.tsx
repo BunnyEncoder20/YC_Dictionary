@@ -25,9 +25,12 @@ const Navbar = async () => {
                             </Link>
 
                             {/* signout button */}
-                            <button onClick={signOut()}>
-                                <span>Logout</span>
-                            </button>
+                            <form action={async () => {
+                                "use server"
+                                await signOut({ redirectTo:'/'});
+                            }}>
+                                <button type='submit'>Logout</button>
+                            </form>
 
                             {/* User profile */}
                             <Link href={`/user/${session?.user?.id}`}>
