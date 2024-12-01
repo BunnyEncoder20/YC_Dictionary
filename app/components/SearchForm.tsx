@@ -3,12 +3,9 @@ import Form from 'next/form';
 
 // components
 import SearchFormReset from './SearchFormReset';
+import { Search } from 'lucide-react';
 
-const SearchForm = () => {
-
-    const query = "test";
-
-    
+const SearchForm = ({ query } : { query?: string }) => {
 
   return (
     <Form action='/' scroll={false} className="search-form">
@@ -25,7 +22,9 @@ const SearchForm = () => {
         </div>
 
         {/* Search button */}
-        <button type='submit' className="search-btn text-white"> S </button>
+        <button type='submit' className="search-btn text-white"> 
+            <Search className='size-5'/>
+        </button>
     </Form>
   )
 }
