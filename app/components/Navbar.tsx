@@ -1,8 +1,16 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
+        <nav className='flex justify-between items-center'>
+            <Link href="/">
+                <Image src="/logo.png" alt="logo" height={30} width={144} />
+            </Link>
+        </nav>
+    </header>
   )
 }
 
