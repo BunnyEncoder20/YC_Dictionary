@@ -3,7 +3,10 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <h1 className="heading">YC Directory</h1>
+      <section className="pink_container">
+        <h1 className="heading">Pitch Your Startup, <br/> Connect with Entrepreneurs</h1>
+        <p className="sub-heading !max-w-3xl">Submit Ideas, Vote on Pitches, and Get Notices in Virtual Competitions !</p>
+      </section>
     </>
   );
 }
