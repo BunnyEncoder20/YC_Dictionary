@@ -9,9 +9,14 @@ import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
 import { EyeIcon } from 'lucide-react'
 
-const StartupCard = ({ post } : { post: StartTypeCard }) => {
+// Sanity Type Gen
+import { Startup, Author } from '@/sanity/types'
+export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author}
 
-  const { _createdAt, views, author: {_id: authorId, name}, title, category, _id, image, description} = post
+
+const StartupCard = ({ post } : { post: StartupTypeCard }) => {
+
+  const { _createdAt, views, author, title, category, _id, image, description} = post
 
   return (
     <li className="startup-card group">
@@ -32,9 +37,9 @@ const StartupCard = ({ post } : { post: StartTypeCard }) => {
         <div className="flex-1">
 
           {/* Author name */}
-          <Link href={`/user/${authorId?._id}`}>
+          <Link href={`/user/${author?._id}`}>
             <p className="text-16-medium line-clamp-1">
-              { name }
+              { author?.name }
             </p>
           </Link>
 
@@ -47,7 +52,7 @@ const StartupCard = ({ post } : { post: StartTypeCard }) => {
         </div>
 
         {/* user profile image */}
-        <Link href={`/user/${authorId?._id}`}>
+        <Link href={`/user/${author?._id}`}>
           <Image src="https://placehold.co/48x48" alt="placeholder" width={48} height={48} className="rounded-full"/>
         </Link>
       </div>
@@ -66,7 +71,7 @@ const StartupCard = ({ post } : { post: StartTypeCard }) => {
         <div className="flex-between mt-5 gap-3">
 
           {/* Startup card category */}
-          <Link href={`/?query=${category.toLowerCase()}`}>
+          <Link href={`/?query=${category?.toLowerCase()}`}>
             <p className="text-16-medium">
               { category }
             </p>
