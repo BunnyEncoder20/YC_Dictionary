@@ -67,24 +67,24 @@ const StartupCard = ({ post } : { post: StartupTypeCard }) => {
 
         {/* startup card image */}
         <img src={image} alt='placeholder' className="startup-card_img"/>
-
-        <div className="flex-between mt-5 gap-3">
-
-          {/* Startup card category */}
-          <Link href={`/?query=${category?.toLowerCase()}`}>
-            <p className="text-16-medium">
-              { category }
-            </p>
-          </Link>
-
-          {/* Startup card detials button */}
-          <Button className="startup-card_btn" asChild>
-            <Link href={`/startup/${_id}`}>
-              Details
-            </Link>
-          </Button>
-        </div>
       </Link>
+
+      <div className="flex-between mt-5 gap-3">
+
+        {/* Startup card category */}
+        <Link href={`/?query=${category?.toLowerCase()}`}>
+          <p className="text-16-medium">
+            { category }
+          </p>
+        </Link>
+
+        {/* Startup card detials button */}
+        <Button className="startup-card_btn" asChild>
+          <Link href={`/startup/${_id}`}>
+            Details
+          </Link>
+        </Button>
+      </div>
     </li>
   )
 }
