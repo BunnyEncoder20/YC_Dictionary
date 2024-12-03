@@ -1,6 +1,8 @@
 // url: http://localhost:3000/startup/[id]
 
-import React from 'react';
+import React,{ Suspense } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -16,6 +18,13 @@ import { STARTUPS_BY_ID_QUERY } from '@/sanity/lib/queries';
 
 // utils
 import { formatDate } from '@/lib/utils';
+
+// components 
+import View from '@/components/View';
+
+
+
+
 
 // component
 const page = async ({ params } : { params: Promise<{ id: string }> }) => {
@@ -75,7 +84,9 @@ const page = async ({ params } : { params: Promise<{ id: string }> }) => {
             <hr className="divider" />
 
             {/* TODO: Editor Selected Startups */}
-
+            <Suspense fallback={ <Skeleton className="view_skeleton"/> }>
+                <View id={id} />
+            </Suspense>
         </section>
     </>
   )

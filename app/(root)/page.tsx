@@ -24,7 +24,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
 
   // new fetch for Sanity Live api (revalidates pages everytime new data is added)
   const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params })
-  console.log(JSON.stringify(posts , null, 2))
+  // console.log(JSON.stringify(posts , null, 2))
 
   return (
     <>
