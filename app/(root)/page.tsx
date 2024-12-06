@@ -32,7 +32,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
 
   // fetch author session
   const session = await auth();
-  console.log(session?.id)
+  console.log("session id: ",session?.id)
 
   return (
     <>
