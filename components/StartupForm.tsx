@@ -1,13 +1,20 @@
-"use client";
+'use client'
 
-import React, { useState } from 'react'
+import React, { useActionState, useState } from 'react'
 import { Send } from 'lucide-react'
 import MDEditor from '@uiw/react-md-editor';
+import { useRouter } from 'next/navigation';
 
 // shadcn imports
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast"
+
+// utils imports
+import { z } from 'zod'
+import { formSchema } from '@/lib/validations'
+
 
 
 
@@ -17,10 +24,76 @@ const StartupForm = () => {
 
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [pitch, setPitch] = useState<string>('');
-    const [isPending, setIsPending] = useState(false)
+    
+    // toast hook
+    const { toast } = useToast();
+
+    // to redirect to new startup pitch page
+    const router = useRouter();
+
+    const handleFormSubmit = async (prevState: any, formData: FormData) => {
+        try {
+            const formValues = {
+                title: formData.get("title") as string,
+                description: formData.get("description") as string,
+                category: formData.get("category") as string,
+                link: formData.get("link") as string,
+                pitch,
+            }
+
+            await formSchema.parseAsync(formValues);
+            console.log(formValues)
+
+            // const result = await createIdea(prevState, formData, pitch)
+            // console.log(result)
+
+            // if ( result.status === "SUCCESS" ) {
+            //     // firing a toast 
+            //     toast({
+            //         title: "Success",
+            //         description: "Your pitch has been submitted successfully",
+            //     })
+
+            //     // redirect to startup's homepage
+            //     router.push(`/startup/${result.id}`)
+            // }
+
+                
+        }
+        catch (error) {
+            if ( error instanceof z.ZodError ) {
+                const fieldErrors = error.flatten().fieldErrors;
+                setErrors(fieldErrors as unknown as Record<string, string>);
+
+                // fire a toast 
+                toast({
+                    title: "Error",
+                    description: "Please check your inputs and try again",
+                    variant: "destructive",
+                })
+                return { ...prevState, error: "Validation Failed", status: "ERROR" };
+            }
+
+            // fire a toast 
+            toast({
+                title: "Error",
+                description: "An unexpected error has occured",
+                variant: "destructive",
+            })
+
+            return {
+                ...prevState,
+                error: "An unexpected error has occured",
+                status: "ERROR",
+            }
+        }
+    }
+
+    // React 19 UseAction for forms
+    const [state, formAction, isPending] = useActionState(handleFormSubmit, { error: "", status: "INITIAL"});
 
   return (
-    <form action={ () => {} } className="startup-form">
+    <form action={ formAction } className="startup-form">
 
         {/* title */}
         <div>
