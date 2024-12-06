@@ -29,4 +29,6 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ### Authentication: Auth.js (aka Next Auth)
 
--  
+### Sanity CMS: Sanity.io
+
+- (signed in using Github Account)
