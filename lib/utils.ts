@@ -31,3 +31,7 @@ export function formatViews(views: number): string {
   const formatted = views / 1000000;
   return `${flag ? formatted.toFixed(0) : formatted.toFixed(1)}M views`;
 }
+
+export function parseServerActionResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response))
+}

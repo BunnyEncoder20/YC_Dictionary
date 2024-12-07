@@ -16,6 +16,9 @@ import { z } from 'zod'
 import { formSchema } from '@/lib/validations'
 
 
+// sevrer action 
+import { createPitch } from '@/lib/actions'
+
 
 
 
@@ -44,20 +47,18 @@ const StartupForm = () => {
             await formSchema.parseAsync(formValues);
             console.log(formValues)
 
-            // const result = await createIdea(prevState, formData, pitch)
-            // console.log(result)
+            const result = await createPitch(prevState, formData, pitch)
 
-            // if ( result.status === "SUCCESS" ) {
-            //     // firing a toast 
-            //     toast({
-            //         title: "Success",
-            //         description: "Your pitch has been submitted successfully",
-            //     })
+            if ( result.status === "SUCCESS" ) {
+                // firing a toast 
+                toast({
+                    title: "Success",
+                    description: "Your pitch has been submitted successfully",
+                })
 
-            //     // redirect to startup's homepage
-            //     router.push(`/startup/${result.id}`)
-            // }
-
+                // redirect to startup's homepage
+                router.push(`/startup/${result.id}`)
+            }
                 
         }
         catch (error) {
