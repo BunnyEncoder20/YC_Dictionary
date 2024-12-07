@@ -1,6 +1,6 @@
 export const experimental_ppr = true;
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/image';
 import { auth } from '@/auth';
 import { notFound } from 'next/navigation';
@@ -65,9 +65,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
                 <p className="text-30-bold">
                     { session?.id === id ? "Your" : "All" } Startups
                 </p>
+
+                {/* list of author startups or all startups */}
                 <ul className="card_grid-sm">
-                    {/* TODO: Add user startups */}
-                    <UserStartups id={ id } />
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <UserStartups id={ id } />
+                    </Suspense>
                 </ul>
             </div>
         </section>
