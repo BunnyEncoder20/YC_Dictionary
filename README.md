@@ -32,3 +32,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ### Sanity CMS: Sanity.io
 
 - (signed in using Github Account)
+- Database and CMS for project
+
+
+### Sentry: Sentry.io
+- (signed in using Github Account)
+- For monitoring and error logging
