@@ -1,4 +1,5 @@
 import React from 'react'
+import { unstable_after as after } from 'next/server'
 
 // components import 
 import Ping from '@/components/Ping'
@@ -11,7 +12,9 @@ import { writeClient } from '@/sanity/lib/write-client'
 // utils imports
 import { formatViews } from '@/lib/utils'
 
-import { unstable_after as after } from 'next/server'
+
+
+
 // current component 
 const View = async ({ id }: { id: string }) => {
 

@@ -83,10 +83,12 @@ const page = async ({ params } : { params: Promise<{ id: string }> }) => {
 
             <hr className="divider" />
 
-            {/* TODO: Editor Selected Startups */}
+            {/* startup views */}
             <Suspense fallback={ <Skeleton className="view_skeleton"/> }>
                 <View id={id} />
             </Suspense>
+
+            {/* TODO: Editor Selected Startups */}
         </section>
     </>
   )

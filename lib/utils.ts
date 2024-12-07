@@ -10,6 +10,9 @@ export function formatDate(date: string) {
 }
 
 export function formatViews(views: number): string {
+  if (views === null || views === undefined || views === 0) {
+    return "Brand New";
+  }
   if (views === 1) {
     return "1 view";
   } 

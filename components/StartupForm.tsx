@@ -57,7 +57,7 @@ const StartupForm = () => {
                 })
 
                 // redirect to startup's homepage
-                router.push(`/startup/${result.id}`)
+                router.push(`/startup/${result._id}`)
             }
                 
         }
