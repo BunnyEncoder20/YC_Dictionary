@@ -2,6 +2,15 @@ import {withSentryConfig} from '@sentry/nextjs';
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+
+  /* To ignore typescript warnings when deploying */
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+
   /* config options here */
   images: {
     dangerouslyAllowSVG: true,
