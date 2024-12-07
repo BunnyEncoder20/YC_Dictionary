@@ -14,13 +14,14 @@ const md = markdownit();
 
 // sanitry imports
 import { client } from '@/sanity/lib/client';
-import { STARTUPS_BY_ID_QUERY } from '@/sanity/lib/queries';
+import { PLAYLIST_BY_SLUG_QUERY, STARTUPS_BY_ID_QUERY } from '@/sanity/lib/queries';
 
 // utils
 import { formatDate } from '@/lib/utils';
 
 // components 
 import View from '@/components/View';
+import StartupCard, { StartupTypeCard } from '@/components/StartupCard';
 
 
 
@@ -32,12 +33,19 @@ const page = async ({ params } : { params: Promise<{ id: string }> }) => {
     // get the startup's id
     const id = (await params).id;
 
-    // fetching post 
-    const post = await client.fetch(STARTUPS_BY_ID_QUERY, {id});
+    // parallel fetching post and playlist data
+    const [post, { select: editorPosts }] = await Promise.all([
+        client.fetch(STARTUPS_BY_ID_QUERY, {id}),
+        client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: 'editor-picks' }),
+    ])
+
+    // parsing post to display pitch in markdown
     if (!post) {
         return notFound(); // 404 page coming from next/navigation
     }
     const parsedContent = md.render( post?.pitch || '' );
+
+    
 
   return (
     <>
@@ -89,6 +97,19 @@ const page = async ({ params } : { params: Promise<{ id: string }> }) => {
             </Suspense>
 
             {/* TODO: Editor Selected Startups */}
+            {
+                editorPosts?.length > 0 && (
+                    <div className="max-w-4xl mx-auto">
+                        <p className="text-30-semibold">Editor picks</p>
+                        <ul className="mt-7 card_grid-sm">
+                        {editorPosts.map((post: StartupTypeCard, i: number) => (
+                            <StartupCard key={i} post={post} />
+                        ))}
+                        </ul>
+                    </div>
+                )
+            }
+
         </section>
     </>
   )
