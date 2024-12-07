@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 
 // components imports 
 import UserStartups from '@/components/UserStartups';
+import { StartupCardSkeleton } from '@/components/StartupCard';
 
 // sanity imports
 import { client } from '@/sanity/lib/client';
@@ -68,7 +69,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
                 {/* list of author startups or all startups */}
                 <ul className="card_grid-sm">
-                    <Suspense fallback={<p>Loading...</p>}>
+                    <Suspense fallback={<StartupCardSkeleton />}>
                         <UserStartups id={ id } />
                     </Suspense>
                 </ul>
