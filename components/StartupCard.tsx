@@ -2,16 +2,17 @@ import React from 'react'
 
 // components
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
+export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author}
 
 // utils 
 import Link from 'next/link'
 import Image from 'next/image'
-import { formatDate,formatViews } from '@/lib/utils'
+import { cn, formatDate,formatViews } from '@/lib/utils'
 import { EyeIcon } from 'lucide-react'
 
 // Sanity Type Gen
 import { Startup, Author } from '@/sanity/types'
-export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author}
 
 
 const StartupCard = ({ post } : { post: StartupTypeCard }) => {
@@ -91,4 +92,13 @@ const StartupCard = ({ post } : { post: StartupTypeCard }) => {
   )
 }
 
+export const StartupCardSkeleton = () => (
+  <>
+    {[0,1,2,3,4].map((index: number) => (
+      <li key={ cn('skeleton', index)}>
+        <Skeleton className="startup-card_skeleton"/>
+      </li>
+    ))}
+  </>
+)
 export default StartupCard
