@@ -21,6 +21,7 @@
 - TailwindCSS
 - ShadCN
 - TypeScript
+- Sentry
 
 ---
 
