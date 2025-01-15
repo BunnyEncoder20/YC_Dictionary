@@ -1,8 +1,9 @@
 # YC Dictionary Project
 
 - A micro project which I'm making to test the theory I've learnt about Next.js.
-  
 - This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+- Account Used: My GitHub account (BunnyEncoder20)
 
 ---
 
@@ -12,7 +13,8 @@
 
 ---
 
-## Tech Stack 
+## Tech Stack
+
 - React 19
 - Next.js 15
 - Sanity
@@ -22,7 +24,8 @@
 
 ---
 
-## Features 
+## Features
+
 - Live Content API: Displays the latest startup ideas dynamically on the homepage using Sanity's Content API.
 
 - GitHub Authentication: Allows users to log in easily using their GitHub account.
@@ -47,7 +50,7 @@ and many more, including the latest React 19, Next.js 15 and Sanity features alo
 
 ---
 
-## Technologies Used in the Project 
+## Technologies Used in the Project
 
 ### Authentication: Auth.js (aka Next Auth)
 
@@ -56,7 +59,7 @@ and many more, including the latest React 19, Next.js 15 and Sanity features alo
 - (signed in using Github Account)
 - Database and CMS for project
 
-
 ### Sentry: Sentry.io
+
 - (signed in using Github Account)
 - For monitoring and error logging
