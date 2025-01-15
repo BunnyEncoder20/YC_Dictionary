@@ -1,3 +1,5 @@
+![Logo](/public/logo.png)
+
 # YC Dictionary Project
 
 - A micro project which I'm making to test the theory I've learnt about Next.js.
