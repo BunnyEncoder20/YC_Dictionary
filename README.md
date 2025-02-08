@@ -53,16 +53,13 @@ and many more, including the latest React 19, Next.js 15 and Sanity features alo
 
 ---
 
-## Technologies Used in the Project
+## Project ScreenShots
 
-### Authentication: Auth.js (aka Next Auth)
-
-### Sanity CMS: Sanity.io
-
-- (signed in using Github Account)
-- Database and CMS for project
-
-### Sentry: Sentry.io
-
-- (signed in using Github Account)
-- For monitoring and error logging
+![](/public/project_ss/2.png)
+![](/public/project_ss/3.png)
+![](/public/project_ss/5.png)
+![](/public/project_ss/6.png)
+![](/public/project_ss/7.png)
+![](/public/project_ss/8.png)
+![](/public/project_ss/9.png)
+![](/public/project_ss/10.png)
